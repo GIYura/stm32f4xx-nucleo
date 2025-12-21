@@ -4,18 +4,20 @@
 #include "button.h"
 #include "board.h"
 
-static uint32_t m_buttonPressCounter = 0;
+static uint32_t m_buttonUserCounter = 0;
 
-static void OnButton(void)
+static void OnButtonUser(void)
 {
-    ++m_buttonPressCounter;
+    ++m_buttonUserCounter;
 }
 
 int main (void)
 {
     Board_Init();
 
-    ButtonRegisterPressHandler(OnButton);
+    Button_t* buttonUser = Board_GetButton(BOARD_BUTTON_USER);
+
+    ButtonRegisterHandler(buttonUser, OnButtonUser);
 
     while (1);
 
