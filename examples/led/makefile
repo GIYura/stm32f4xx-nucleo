@@ -15,6 +15,11 @@ SRCDIR = src
 BSP = bsp
 
 ##############################################
+# APPLICATION
+##############################################
+APPLICATION = led
+
+##############################################
 # Target platform
 ##############################################
 PLATFORM ?= 
@@ -124,7 +129,7 @@ OBJS = $(COBJS) $(ASMOBJS)
 STANDARD = c99
 OPT = -O0
 DEFINES += -DNDEBUG=1
-#APPLICATION = esp
+
 TARGET = $(BUILD)/$(PLATFORM)-$(APPLICATION)
 EXEC = $(TARGET).elf
 RM = rm -rf
