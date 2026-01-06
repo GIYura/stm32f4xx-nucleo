@@ -4,3 +4,6 @@
 [submodule "examples/button/uSDK"]
 	path = examples/button/uSDK
 	url = git@github.com:GIYura/uSDK.git
+[submodule "examples/timer/uSDK"]
+	path = examples/timer/uSDK
+	url = git@github.com:GIYura/uSDK.git
