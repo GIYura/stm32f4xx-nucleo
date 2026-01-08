@@ -3,47 +3,20 @@
 #include "custom-assert.h"
 #include "board.h"
 #include "timer.h"
+#include "sw-timer.h"
 
-#include "gpio.h"
-#include "gpio-name.h"
-
-static TimerHandle_t m_timer;
-static SwTimer_t m_swTimer;
-
-static uint8_t m_counter = 0;
-
-#if 0
-/*
- * NOTE:
- * This gpio is for test only
- */
-#endif
-static GpioHandle_t m_gpio;
-
-static void OnSwTimer(void)
-{
-    m_counter++;
-
-    m_gpio.ops->toggle(&m_gpio);
-}
+static TimerHandle_t m_hwTimer;
 
 void Board_Init(void)
 {
-    const TimerOps_t* timerOps = TimerGetOps();
-    const GpioOps_t* gpioOps = GpioGetOps();
+    const TimerOps_t* hwTimerOps = TimerGetOps();
 
-    m_timer.ops = timerOps;
-    m_gpio.ops = gpioOps;
+    m_hwTimer.ops = hwTimerOps;
 
-    m_gpio.ops->open(&m_gpio, PC_4, PIN_MODE_OUTPUT, PIN_TYPE_NO_PULL, PIN_STRENGTH_HIGH, PIN_CONFIG_PUSH_PULL, PIN_STATE_LOW);
+    m_hwTimer.ops->open(&m_hwTimer, 10);
 
-    SwTimerInit(&m_swTimer, &m_timer, 10, PERIODIC);
+    m_hwTimer.ops->interrupt(&m_hwTimer, SwTimerTick);
 
-    SwTimerRegisterCallback(&m_swTimer, OnSwTimer);
-}
-
-SwTimer_t* Board_GetSwTimer(void)
-{
-    return &m_swTimer;
+    m_hwTimer.ops->start(&m_hwTimer);
 }
 
