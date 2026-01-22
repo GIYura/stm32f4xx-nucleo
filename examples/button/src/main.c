@@ -19,7 +19,13 @@ int main (void)
 
     ButtonRegisterHandler(buttonUser, OnButtonUser);
 
-    while (1);
+    while (1)
+    {
+        if (m_buttonUserCounter > 5)
+        {
+            ButtonDeinit(buttonUser);
+        }
+    }
 
     return 0;
 }
