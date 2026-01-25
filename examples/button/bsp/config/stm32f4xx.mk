@@ -24,11 +24,6 @@ LINKER_SCRIPT = $(SUBMODULES)/platforms/boot/stm32f4xx/stm32f4xx.ld
 DEFINES += -D$(MCU)
 
 ##############################################
-# APPLICATION
-##############################################
-APPLICATION = button
-
-##############################################
 # Include directories
 ##############################################
 PLATFORM_DIRS = \
