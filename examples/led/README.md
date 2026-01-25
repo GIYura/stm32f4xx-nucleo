@@ -21,3 +21,5 @@ Target: NUCLEO-F411RE
 | CN7 (37)     | PC3    | Yellow |
 | CN10 (34)    | PC4    | White  |
 | Build-in     | PA5    | Green  |
+
+![LEDs blink](led-animation.gif)
