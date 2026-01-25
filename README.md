@@ -12,6 +12,7 @@ Peripheral drivers are stored in a shared submodule:
 |-----------------|-----------------------------------------|------------------|
 | led             | Simple LED control via GPIO             |                  |
 | button          | Simple Button control via GPIO          |                  |
+| timer           | Simple toggle 2 GPIOs based on sw-timer |                  |
 
 ### Build and Run
 
