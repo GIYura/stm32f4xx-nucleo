@@ -6,6 +6,7 @@ Two gpios (PC3, PC4) toggled based on sw-timer. Sw-timer based on RTC (10 ms).
 Sw-timer timeout is setup in RTC ticks.
 
 **Example:**
+
 sw-timer timeout 15 means: 15 ticks * 10 ms (RTC period) = 150 ms.
 
 ### Structure
@@ -28,4 +29,4 @@ Target: NUCLEO-F411RE
 | CN10 (34)    | PC4    |             |
 
 
-![Description of the image](gpios-on-sw-timer.png)
+![Oscillogram PC3, PC4 toggle](gpios-on-sw-timer.png)
