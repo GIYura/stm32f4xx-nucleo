@@ -26,3 +26,6 @@ Target: NUCLEO-F411RE
 |--------------|--------|-------------|
 | CN7 (37)     | PC3    |             |
 | CN10 (34)    | PC4    |             |
+
+
+![Description of the image](gpios-on-sw-timer.png)
