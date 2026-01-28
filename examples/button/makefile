@@ -1,5 +1,5 @@
 ##############################################
-#			Multi-Platform Build			#
+#          Multi-Platform Build              #
 ##############################################
 
 ##############################################
@@ -94,7 +94,7 @@ DIRS = \
     $(SRCDIR) \
     $(PLATFORM_BOOT) \
     $(SUBMODULES)/core/assert \
-    $(SUBMODULES)/lib/drivers/button \
+    $(SUBMODULES)/lib/drivers/button
 
 ##############################################
 # List of source files (.c)
