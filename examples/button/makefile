@@ -94,7 +94,8 @@ DIRS = \
     $(SRCDIR) \
     $(PLATFORM_BOOT) \
     $(SUBMODULES)/core/assert \
-    $(SUBMODULES)/lib/drivers/button
+    $(SUBMODULES)/lib/drivers/button \
+    $(SUBMODULES)/lib/drivers/sw-timer
 
 ##############################################
 # List of source files (.c)
