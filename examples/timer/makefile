@@ -95,6 +95,7 @@ DIRS = \
     $(PLATFORM_BOOT) \
     $(SUBMODULES)/core/assert \
     $(SUBMODULES)/lib/drivers/sw-timer \
+    $(SUBMODULES)/utils
 
 ##############################################
 # List of source files (.c)

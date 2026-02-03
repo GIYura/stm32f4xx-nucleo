@@ -6,6 +6,7 @@
 
 #include "gpio.h"
 #include "gpio-name.h"
+#include "ignore.h"
 
 static SwTimer_t m_swTimer1;
 static GpioHandle_t m_gpio1;
@@ -15,14 +16,18 @@ static SwTimer_t m_swTimer2;
 static GpioHandle_t m_gpio2;
 static uint8_t m_counter2 = 0;
 
-void OnSwTimer1(void)
+void OnSwTimer1(void* context)
 {
+    IGNORE(context);
+
     m_counter1++;
     m_gpio1.ops->toggle(&m_gpio1);
 }
 
-void OnSwTimer2(void)
+void OnSwTimer2(void* context)
 {
+    IGNORE(context);
+
     m_counter2++;
     m_gpio2.ops->toggle(&m_gpio2);
 }
@@ -38,18 +43,16 @@ int main (void)
 
     Board_Init();
 
-    SwTimerInit(&m_swTimer1, 15, SW_TIMER_PERIODIC);
-    SwTimerRegisterCallback(&m_swTimer1, OnSwTimer1);
-    SwTimerStart(&m_swTimer1);
+    SwTimerInit(&m_swTimer1, 150, SW_TIMER_PERIODIC);
+    SwTimerRegisterCallback(&m_swTimer1, &OnSwTimer1, NULL);
 
-    SwTimerInit(&m_swTimer2, 5, SW_TIMER_PERIODIC);
-    SwTimerRegisterCallback(&m_swTimer2, OnSwTimer2);
+    SwTimerInit(&m_swTimer2, 250, SW_TIMER_PERIODIC);
+    SwTimerRegisterCallback(&m_swTimer2, &OnSwTimer2, NULL);
+
+    SwTimerStart(&m_swTimer1);
     SwTimerStart(&m_swTimer2);
 
-    while (1)
-    {
-
-    }
+    while (1);
 
     return 0;
 }
