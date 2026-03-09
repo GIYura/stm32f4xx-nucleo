@@ -2,12 +2,7 @@
 
 SW-Timer demo.
 
-Two gpios (PC3, PC4) toggled based on sw-timer. Sw-timer based on RTC (10 ms).
-Sw-timer timeout is setup in RTC ticks.
-
-**Example:**
-
-sw-timer timeout 15 means: 15 ticks * 10 ms (RTC period) = 150 ms.
+Two gpios (PC3, PC4) toggled based on sw-timer. Sw-timer based on RTC (1 ms).
 
 ### Structure
 

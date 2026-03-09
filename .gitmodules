@@ -7,3 +7,6 @@
 [submodule "examples/timer/uSDK"]
 	path = examples/timer/uSDK
 	url = git@github.com:GIYura/uSDK.git
+[submodule "examples/wi-fi/uSDK"]
+	path = examples/wi-fi/uSDK
+	url = git@github.com:GIYura/uSDK.git
