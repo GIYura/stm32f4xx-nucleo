@@ -53,7 +53,7 @@ Application -> Board/BSP -> ESP8266 module / LED / SW timer -> HAL -> STM32 plat
 1. Clone
 
 ```
-https://github.com/GIYura/stm32f4xx-nucleo
+git clone git@github.com:GIYura/stm32f4xx-nucleo.git
 ```
 
 2. Navigate
@@ -67,6 +67,8 @@ cd examples/wi-fi
 ```
 ./scripts/build
 ```
+
+4. Follow prompts to run OCD or Flash the target
 
 ### Wifi connection
 
