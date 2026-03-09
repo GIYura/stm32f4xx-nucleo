@@ -97,3 +97,6 @@ nc -v <server ip-address> <port>
 LED_ON
 LED_OFF
 ```
+
+![FW](fw-struct.png)
+
