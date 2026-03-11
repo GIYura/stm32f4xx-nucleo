@@ -9,6 +9,8 @@ WIFI: ESP8266
 
 ### Connection 
 
+**UART_1**
+
 | Nucleo pin   | GPIO        | ESP pin      |
 |--------------|-------------|--------------|
 | CN10 (33)    | PA10        | tx           |
@@ -16,10 +18,22 @@ WIFI: ESP8266
 | CN7 (18)     | +5V         | +5V          |
 | CN7 (20)     | GND         | GND          |
 
-| Nucleo pin   | GPIO        | LED pin      |
+**UART_2**
+
+**NOTE:** UART_2 (pins PA_2, PA3) are used for VCP.
+
+Pins PD_5, PD_6 are not populated on Nucleo board.
+
+**UART_6**
+
+| Nucleo pin   | GPIO        | ESP pin      |
 |--------------|-------------|--------------|
-| CN7 (37)     | PC3         | +            |
-| CN7 (22)     | GND         | -            |
+| CN10 (12)    | PA11        | tx           |
+| CN10 (14)    | PA12        | rx           |
+| CN7 (18)     | +5V         | +5V          |
+| CN7 (20)     | GND         | GND          |
+
+**LED**
 
 | Nucleo pin   | GPIO        | LED          |
 |--------------|-------------|--------------|
