@@ -5,8 +5,8 @@
 
 typedef enum
 {
-    BOARD_BUTTON_USER,
-    BOARD_BUTTON_EXTERNAL,
+    BOARD_BUTTON_ID_USER,
+    BOARD_BUTTON_ID_EXTERNAL,
     BOARD_BUTTON_COUNT
 } BOARD_BUTTON_ID;
 
@@ -14,12 +14,12 @@ typedef enum
 * [in] - none
 * [out] - none
 * */
-void Board_Init(void);
+void BoardInit(void);
 
 /*Brief: Get board button
 * [in] - id  - button id
 * [out] - pointer to button object
 * */
-Button_t* Board_GetButton(BOARD_BUTTON_ID id);
+Button_t* BoardGetButton(BOARD_BUTTON_ID id);
 
 #endif /* BOARD_H */

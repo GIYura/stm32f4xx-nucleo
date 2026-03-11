@@ -18,4 +18,5 @@ Target: NUCLEO-F411RE
 
 | Nucleo pin   | GPIO   | Button |
 |--------------|--------|--------|
-| built-in     | PC13   |        |
+| built-in     | PC13   | user   |
+| CN7(35)      | PC2    | ext    |

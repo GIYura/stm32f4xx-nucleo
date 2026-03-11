@@ -2,9 +2,9 @@
 
 #include "custom-assert.h"
 #include "board.h"
+#include "board-pin.h"
 #include "button.h"
 #include "gpio.h"
-#include "gpio-name.h"
 #include "timer.h"
 #include "sw-timer.h"
 
@@ -26,16 +26,16 @@ static SwTimer_t debounceTimerExternal;
 /* HW timer */
 static TimerHandle_t m_hwTimer;
 
-void Board_Init(void)
+void BoardInit(void)
 {
     const GpioOps_t* gpioOps = GpioGetOps();
     const TimerOps_t* hwTimerOps = TimerGetOps();
 
     m_gpioButtonUser.ops = gpioOps;
-    m_gpioButtonUser.ops->open(&m_gpioButtonUser, PC_13, PIN_MODE_INPUT, PIN_TYPE_PULL_UP, PIN_STRENGTH_HIGH, PIN_CONFIG_PUSH_PULL, PIN_STATE_HIGH);
+    m_gpioButtonUser.ops->open(&m_gpioButtonUser, BOARD_BUTTON_USER, PIN_MODE_INPUT, PIN_TYPE_PULL_UP, PIN_STRENGTH_HIGH, PIN_CONFIG_PUSH_PULL, PIN_STATE_HIGH);
 
     m_gpioButtonExternal.ops = gpioOps;
-    m_gpioButtonExternal.ops->open(&m_gpioButtonExternal, PC_2, PIN_MODE_INPUT, PIN_TYPE_PULL_UP, PIN_STRENGTH_HIGH, PIN_CONFIG_PUSH_PULL, PIN_STATE_HIGH);
+    m_gpioButtonExternal.ops->open(&m_gpioButtonExternal, BOARD_BUTTON_EXT, PIN_MODE_INPUT, PIN_TYPE_PULL_UP, PIN_STRENGTH_HIGH, PIN_CONFIG_PUSH_PULL, PIN_STATE_HIGH);
 
     ButtonInit(&m_buttonUser, &m_gpioButtonUser, &debounceTimer, BUTTON_DEBOUNCE_TIMEOUT_MS);
     ButtonInit(&m_buttonExternal, &m_gpioButtonExternal, &debounceTimerExternal, BUTTON_DEBOUNCE_TIMEOUT_MS);
@@ -44,22 +44,22 @@ void Board_Init(void)
 
     m_hwTimer.ops->open(&m_hwTimer, HW_TIMER_TIMEOUT_MS);
 
-    m_hwTimer.ops->interrupt(&m_hwTimer, SwTimerTick);
+    m_hwTimer.ops->interrupt(&m_hwTimer, SwTimerTick, 6);
 
     m_hwTimer.ops->start(&m_hwTimer);
 }
 
-Button_t* Board_GetButton(BOARD_BUTTON_ID id)
+Button_t* BoardGetButton(BOARD_BUTTON_ID id)
 {
     ASSERT(id < BOARD_BUTTON_COUNT);
 
     switch (id)
     {
-    case BOARD_BUTTON_USER:
+    case BOARD_BUTTON_ID_USER:
         return &m_buttonUser;
         break;
 
-    case BOARD_BUTTON_EXTERNAL:
+    case BOARD_BUTTON_ID_EXTERNAL:
         return &m_buttonExternal;
         break;
 
