@@ -3,8 +3,6 @@
 #include "custom-assert.h"
 #include "board.h"
 #include "board-pin.h"
-//#include "gpio.h"
-//#include "gpio-name.h"
 #include "timer.h"
 #include "sw-timer.h"
 #include "uart.h"
@@ -47,10 +45,10 @@ void BoardInit(void)
 
     LedInit(&m_ledGreen, &m_gpioLedGreen, BOARD_LED_GREEN);
     LedInit(&m_ledYellow, &m_gpioLedYellow, BOARD_LED_YELLOW);
-    LedInit(&m_ledWhite, &m_gpioLedWhite, BOARD_LED_WHITE /*PC_4*/);
+    LedInit(&m_ledWhite, &m_gpioLedWhite, BOARD_LED_WHITE);
 
     m_uart.ops = uartOps;
-    m_uart.ops->open(&m_uart, BOARD_ESP_UART/*UART_1*/, BAUD_115200, &m_swTimer, ESP_RESPONSE_TIMEOUT_MS);
+    m_uart.ops->open(&m_uart, BOARD_ESP_UART, BAUD_115200, &m_swTimer, ESP_RESPONSE_TIMEOUT_MS);
 
     EspInit(&m_esp, &m_uart);
 
