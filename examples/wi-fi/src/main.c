@@ -39,9 +39,9 @@ int main (void)
 {
     BoardInit();
 
-    Led_t* ledGreen = BoardGetLed(BOARD_LED_ID_GREEN);
-    Led_t* ledYellow = BoardGetLed(BOARD_LED_ID_YELLOW);
-    Led_t* ledWhite = BoardGetLed(BOARD_LED_ID_WHITE);
+    LedHandle_t* ledGreen = BoardGetLed(BOARD_LED_ID_GREEN);
+    LedHandle_t* ledYellow = BoardGetLed(BOARD_LED_ID_YELLOW);
+    LedHandle_t* ledWhite = BoardGetLed(BOARD_LED_ID_WHITE);
 
     LedOn(ledGreen);
     LedOn(ledYellow);
