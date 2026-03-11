@@ -14,6 +14,7 @@ Peripheral drivers are stored in a shared submodule:
 | button          | Simple Button control via GPIO          |                  |
 | timer           | Simple toggle 2 GPIOs based on sw-timer |                  |
 | wi-fi           | Control LEDs over wifi (esp8266)        |                  |
+| accel           | Control ADXL345                         |                  |
 
 ### Build and Run
 
