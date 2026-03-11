@@ -21,8 +21,8 @@ int main (void)
 {
     BoardInit();
 
-    Button_t* buttonUser = BoardGetButton(BOARD_BUTTON_ID_USER);
-    Button_t* buttonExternal = BoardGetButton(BOARD_BUTTON_ID_EXTERNAL);
+    ButtonHandle_t* buttonUser = BoardGetButton(BOARD_BUTTON_ID_USER);
+    ButtonHandle_t* buttonExternal = BoardGetButton(BOARD_BUTTON_ID_EXTERNAL);
 
     ButtonRegisterHandler(buttonUser, OnButtonUser);
     ButtonRegisterHandler(buttonExternal, OnButtonExternal);

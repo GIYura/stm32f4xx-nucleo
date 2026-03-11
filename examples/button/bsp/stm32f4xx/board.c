@@ -16,8 +16,8 @@ static GpioHandle_t m_gpioButtonUser;
 static GpioHandle_t m_gpioButtonExternal;
 
 /* Button */
-static Button_t m_buttonUser;
-static Button_t m_buttonExternal;
+static ButtonHandle_t m_buttonUser;
+static ButtonHandle_t m_buttonExternal;
 
 /* Debounce timer (based on HW timer) */
 static SwTimer_t debounceTimer;
@@ -49,7 +49,7 @@ void BoardInit(void)
     m_hwTimer.ops->start(&m_hwTimer);
 }
 
-Button_t* BoardGetButton(BOARD_BUTTON_ID id)
+ButtonHandle_t* BoardGetButton(BOARD_BUTTON_ID id)
 {
     ASSERT(id < BOARD_BUTTON_COUNT);
 

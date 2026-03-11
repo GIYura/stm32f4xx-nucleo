@@ -20,6 +20,6 @@ void BoardInit(void);
 * [in] - id  - button id
 * [out] - pointer to button object
 * */
-Button_t* BoardGetButton(BOARD_BUTTON_ID id);
+ButtonHandle_t* BoardGetButton(BOARD_BUTTON_ID id);
 
 #endif /* BOARD_H */
