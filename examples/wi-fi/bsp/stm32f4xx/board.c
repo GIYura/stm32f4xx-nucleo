@@ -2,8 +2,9 @@
 
 #include "custom-assert.h"
 #include "board.h"
-#include "gpio.h"
-#include "gpio-name.h"
+#include "board-pin.h"
+//#include "gpio.h"
+//#include "gpio-name.h"
 #include "timer.h"
 #include "sw-timer.h"
 #include "uart.h"
@@ -23,7 +24,7 @@ static Led_t m_ledYellow;
 static Led_t m_ledWhite;
 
 /* UART (transport layer for ESP) */
-static UART_Handle_t m_uart;
+static UartHandle_t m_uart;
 
 /* SW timer */
 static SwTimer_t m_swTimer;
@@ -44,12 +45,12 @@ void BoardInit(void)
     m_gpioLedWhite.ops = gpioOps;
     m_gpioLedYellow.ops = gpioOps;
 
-    LedInit(&m_ledGreen, &m_gpioLedGreen, PA_5);
-    LedInit(&m_ledYellow, &m_gpioLedYellow, PC_3);
-    LedInit(&m_ledWhite, &m_gpioLedWhite, PC_4);
+    LedInit(&m_ledGreen, &m_gpioLedGreen, BOARD_LED_GREEN);
+    LedInit(&m_ledYellow, &m_gpioLedYellow, BOARD_LED_YELLOW);
+    LedInit(&m_ledWhite, &m_gpioLedWhite, BOARD_LED_WHITE /*PC_4*/);
 
     m_uart.ops = uartOps;
-    m_uart.ops->open(&m_uart, UART_1, BAUD_115200, &m_swTimer, ESP_RESPONSE_TIMEOUT_MS);
+    m_uart.ops->open(&m_uart, BOARD_ESP_UART/*UART_1*/, BAUD_115200, &m_swTimer, ESP_RESPONSE_TIMEOUT_MS);
 
     EspInit(&m_esp, &m_uart);
 
@@ -68,15 +69,15 @@ Led_t* BoardGetLed(BOARD_LED_ID id)
 
     switch (id)
     {
-    case BOARD_LED_GREEN:
+    case BOARD_LED_ID_GREEN:
         return &m_ledGreen;
         break;
 
-    case BOARD_LED_YELLOW:
+    case BOARD_LED_ID_YELLOW:
         return &m_ledYellow;
         break;
 
-    case BOARD_LED_WHITE:
+    case BOARD_LED_ID_WHITE:
         return &m_ledWhite;
         break;
 
