@@ -7,11 +7,11 @@
 
 int main (void)
 {
-    Board_Init();
+    BoardInit();
 
-    Led_t* ledWhite = Board_GetLed(BOARD_LED_WHITE);
-    Led_t* ledGreen = Board_GetLed(BOARD_LED_GREEN);
-    Led_t* ledYellow = Board_GetLed(BOARD_LED_YELLOW);
+    Led_t* ledWhite = BoardGetLed(BOARD_LED_ID_WHITE);
+    Led_t* ledGreen = BoardGetLed(BOARD_LED_ID_GREEN);
+    Led_t* ledYellow = BoardGetLed(BOARD_LED_ID_YELLOW);
 
 /* NOTE: this is done for test only */
 #if 1
@@ -27,7 +27,7 @@ int main (void)
     LedDeinit(ledGreen);
     LedDeinit(ledYellow);
 
-    Board_Init();
+    BoardInit();
 #endif
 
     while (1)

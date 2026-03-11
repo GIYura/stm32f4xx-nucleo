@@ -90,12 +90,13 @@ CFLAGS = -mcpu=$(CPU) \
 ##############################################
 DIRS = \
     $(SUBMODULES)/hal/include \
+    $(SUBMODULES)/hal/include/gpio \
     $(PLATFORM_DIRS) \
     $(SRCDIR) \
     $(PLATFORM_BOOT) \
     $(SUBMODULES)/core/assert \
     $(SUBMODULES)/lib/drivers/led \
-    $(SUBMODULES)/delay
+    $(SUBMODULES)/delay \
 
 ##############################################
 # List of source files (.c)

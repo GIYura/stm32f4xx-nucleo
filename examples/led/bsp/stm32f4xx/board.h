@@ -5,9 +5,9 @@
 
 typedef enum
 {
-    BOARD_LED_GREEN,
-    BOARD_LED_WHITE,
-    BOARD_LED_YELLOW,
+    BOARD_LED_ID_GREEN,
+    BOARD_LED_ID_WHITE,
+    BOARD_LED_ID_YELLOW,
     BOARD_LED_COUNT
 } BOARD_LED_ID;
 
@@ -15,12 +15,12 @@ typedef enum
 * [in] - none
 * [out] - none
 * */
-void Board_Init(void);
+void BoardInit(void);
 
 /*Brief: Get board LED
 * [in] - id  - LED id
 * [out] - pointer to LED object
 * */
-Led_t* Board_GetLed(BOARD_LED_ID id);
+Led_t* BoardGetLed(BOARD_LED_ID id);
 
 #endif /* BOARD_H */
