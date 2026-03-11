@@ -90,14 +90,14 @@ CFLAGS = -mcpu=$(CPU) \
 ##############################################
 DIRS = \
     $(SUBMODULES)/hal/include \
+    $(SUBMODULES)/hal/include/gpio \
+    $(SUBMODULES)/hal/include/spi \
     $(PLATFORM_DIRS) \
     $(SRCDIR) \
     $(PLATFORM_BOOT) \
     $(SUBMODULES)/core/assert \
     $(SUBMODULES)/buffer \
-    $(SUBMODULES)/lib/drivers/sw-timer \
     $(SUBMODULES)/event \
-    $(SUBMODULES)/delay \
     $(SUBMODULES)/utils \
 
 ##############################################
