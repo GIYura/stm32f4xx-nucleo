@@ -21,6 +21,6 @@ void BoardInit(void);
 * [in] - id  - LED id
 * [out] - pointer to LED object
 * */
-Led_t* BoardGetLed(BOARD_LED_ID id);
+LedHandle_t* BoardGetLed(BOARD_LED_ID id);
 
 #endif /* BOARD_H */

@@ -11,9 +11,9 @@ static GpioHandle_t m_gpioLedYellow;
 static GpioHandle_t m_gpioLedWhite;
 
 /* LEDs */
-static Led_t m_ledGreen;
-static Led_t m_ledYellow;
-static Led_t m_ledWhite;
+static LedHandle_t m_ledGreen;
+static LedHandle_t m_ledYellow;
+static LedHandle_t m_ledWhite;
 
 void BoardInit(void)
 {
@@ -28,7 +28,7 @@ void BoardInit(void)
     LedInit(&m_ledWhite, &m_gpioLedWhite, BOARD_LED_WHITE);
 }
 
-Led_t* BoardGetLed(BOARD_LED_ID id)
+LedHandle_t* BoardGetLed(BOARD_LED_ID id)
 {
     ASSERT(id < BOARD_LED_COUNT);
 
