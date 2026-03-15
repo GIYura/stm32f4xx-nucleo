@@ -98,7 +98,9 @@ DIRS = \
     $(SUBMODULES)/core/assert \
     $(SUBMODULES)/buffer \
     $(SUBMODULES)/event \
+    $(SUBMODULES)/delay \
     $(SUBMODULES)/utils \
+    $(SUBMODULES)/lib/drivers/adxl345 \
 
 ##############################################
 # List of source files (.c)
