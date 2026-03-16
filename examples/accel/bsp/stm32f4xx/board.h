@@ -15,4 +15,10 @@ void BoardInit(void);
 * */
 AdxlHandle_t* BoardGetAdxl(void);
 
+/*Brief: Get board ADXL345 configure
+* [in] - size - configure size
+* [out] - pointer to ADXL configure sequence
+* */
+AdxlRegisters_t* BoardGetAdxlConfig(uint8_t* const size);
+
 #endif /* BOARD_H */

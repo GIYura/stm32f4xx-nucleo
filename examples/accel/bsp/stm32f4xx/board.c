@@ -1,6 +1,8 @@
 #include <stddef.h>
 
+#include "custom-assert.h"
 #include "adxl345.h"
+#include "adxl345-regs.h"
 #include "board.h"
 #include "board-pin.h"
 #include "spi.h"
@@ -14,6 +16,12 @@ static SpiHandle_t m_spi;
 static GpioHandle_t m_gpioCs;
 
 static AdxlHandle_t m_adxl;
+
+static AdxlRegisters_t m_adxlConfig[] = {
+        { ADXL345_POWER_CTL, 0x08 },    /* measure mode */
+        { ADXL345_DATA_FORMAT, 0x0B },  /* full resolution, +- 16g */
+        { ADXL345_BW_RATE, 0x0A },      /* 100 Hz */
+};
 
 void BoardInit(void)
 {
@@ -35,3 +43,11 @@ AdxlHandle_t* BoardGetAdxl(void)
     return &m_adxl;
 }
 
+AdxlRegisters_t* BoardGetAdxlConfig(uint8_t* const size)
+{
+    ASSERT(size != NULL);
+
+    *size = (sizeof(m_adxlConfig) / sizeof(m_adxlConfig[0]));
+
+    return m_adxlConfig;
+}

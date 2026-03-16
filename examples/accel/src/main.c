@@ -7,14 +7,9 @@
 #include "event.h"
 #include "ignore.h"
 
-#if 0
-NOTE: for test default registers only.
-static AdxlRegisters_t m_adxlRegisters[ADXL_REGISTERS_COUNT];
-#endif
-
 static uint8_t m_accelId = 0;
-static Acceleration_t m_accelVector = { 0 };
-static uint8_t m_accelPowerControl = 0x08;      /* turn on measurement */
+static AdxlAcceleration_t m_accelVector = { 0 };
+static uint8_t m_accelConfigSize = 0;
 
 static void OnAccelRegisterRead(void* data, void* context)
 {
@@ -44,8 +39,8 @@ static void OnAccelVectorRead(void* vector, void* context)
     ASSERT(vector != NULL);
     ASSERT(context != NULL);
 
-    Acceleration_t* pValue = (Acceleration_t*)context;
-    Acceleration_t* pVector = (Acceleration_t*)vector;
+    AdxlAcceleration_t* pValue = (AdxlAcceleration_t*)context;
+    AdxlAcceleration_t* pVector = (AdxlAcceleration_t*)vector;
 
     pValue->x = pVector->x;
     pValue->y = pVector->y;
@@ -63,6 +58,7 @@ int main (void)
     EventQueueInit();
 
     AdxlHandle_t* adxl = BoardGetAdxl();
+    AdxlRegisters_t* adxlConfig = BoardGetAdxlConfig(&m_accelConfigSize);
 
     AdxlRegisterReadRegHandler(adxl, &OnAccelRegisterRead);
     AdxlRegisterWriteRegHandler(adxl, &OnAccelRegisterWrite);
@@ -93,7 +89,7 @@ int main (void)
 
                     if (*(uint8_t*)e.context == ADXL345_ID)
                     {
-                        AdxlWriteRegisterAsyncSpi(adxl, ADXL345_POWER_CTL, &m_accelPowerControl);
+                        AdxlConfigureAsync(adxl, adxlConfig, m_accelConfigSize, &OnAccelRegisterWrite);
                     }
 
                     break;

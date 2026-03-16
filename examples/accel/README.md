@@ -113,4 +113,11 @@ Data flow from hardware interrupt to application logic is organized through call
 
 **SPI transaction**
 
+Adxl read ID
+
 ![adxl](adxl-read-id.png) 
+
+Adxl read vector
+
+![adxl](adxl-read-vector.png) 
+
