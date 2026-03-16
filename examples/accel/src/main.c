@@ -89,7 +89,7 @@ int main (void)
 
                     if (*(uint8_t*)e.context == ADXL345_ID)
                     {
-                        AdxlConfigureAsync(adxl, adxlConfig, m_accelConfigSize, &OnAccelRegisterWrite);
+                        AdxlConfigureAsyncSpi(adxl, adxlConfig, m_accelConfigSize, &OnAccelRegisterWrite);
                     }
 
                     break;
