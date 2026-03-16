@@ -63,6 +63,7 @@ int main (void)
     AdxlRegisterReadRegHandler(adxl, &OnAccelRegisterRead);
     AdxlRegisterWriteRegHandler(adxl, &OnAccelRegisterWrite);
     AdxlRegisterReadVectorHandler(adxl, &OnAccelVectorRead);
+    AdxlRegisterConfigureHandler(adxl, &OnAccelRegisterWrite);
 
     AdxlReadRegisterAsyncSpi(adxl, ADXL345_DEVID, &m_accelId);
 
@@ -89,7 +90,7 @@ int main (void)
 
                     if (*(uint8_t*)e.context == ADXL345_ID)
                     {
-                        AdxlConfigureAsyncSpi(adxl, adxlConfig, m_accelConfigSize, &OnAccelRegisterWrite);
+                        AdxlConfigureAsyncSpi(adxl, adxlConfig, m_accelConfigSize);
                     }
 
                     break;
